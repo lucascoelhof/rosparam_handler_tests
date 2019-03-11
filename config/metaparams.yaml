@@ -1,0 +1,7 @@
+number_of_numbers:
+  default: 3
+  configurable: true
+  paramtype: int
+  min: 1
+  max: 10
+  description: "Number of number it should print."

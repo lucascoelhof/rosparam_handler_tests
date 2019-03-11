@@ -1,0 +1,19 @@
+#!/usr/bin/env python
+import yaml
+import os
+
+from rosparam_handler.parameter_generator_catkin import *
+gen = ParameterGenerator()
+
+param_file = os.path.join(os.path.dirname(os.path.realpath(__file__)), "metaparams.yaml")
+if not os.path.isfile(param_file):
+    print("File {0} does not exist!".format(param_file))
+    exit(1)
+
+yamlfile = open(param_file, 'r')
+params = yaml.load(yamlfile)
+
+for key, param in params.iteritems():
+    gen.add(key, **param)
+
+exit(gen.generate("rosparam_handler_tests", "test", "rosparam"))
