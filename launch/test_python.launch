@@ -1,0 +1,10 @@
+<launch>
+  <arg name="params_file" default="$(find rosparam_handler_tests)/config/params.yaml" />
+
+  <node name="node_python" pkg="rosparam_handler_tests" type="test.py" output="screen">
+    <rosparam command="load" file="$(arg params_file)"/>
+  </node>
+
+  <node name="reconfigure_gui" pkg="rqt_reconfigure" type="rqt_reconfigure" />
+
+</launch>
